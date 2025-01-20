@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girly Futuristic Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffe1e8, #ffe6ff, #f2e1ff);
+            color: #4a154b;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff80b3;
+        }
+
+        header nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #4a154b;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        header nav a:hover {
+            color: #ff80b3;
+        }
+
+        section {
+            padding: 30px 20px;
+        }
+
+        #profile {
+            display: grid;
+            grid-template-areas: 
+                "pic"
+                "bio";
+            grid-template-columns: 1fr;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-align: center;
+        }
+
+        #profile img {
+            grid-area: pic;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 4px solid #ff80b3;
+            margin: 0 auto;
+        }
+
+        #profile h1 {
+            font-size: 1.5rem;
+            margin: 5px 0;
+        }
+
+        #profile p {
+            font-size: 0.9rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #skills, #projects, #about, #contact {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin: 15px auto;
+            max-width: 95%;
+        }
+
+        #skills ul, #projects ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #skills ul li, #projects ul li {
+            background: #ffe6ff;
+            padding: 8px 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        #skills ul li:hover, #projects ul li:hover {
+            transform: scale(1.05);
+        }
+
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #contact form input, #contact form textarea {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #ff80b3;
+            border-radius: 5px;
+        }
+
+        #contact form button {
+            padding: 8px;
+            background: #ff80b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #contact form button:hover {
+            background: #ff66a3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (min-width: 768px) {
+            #profile {
+                grid-template-areas: 
+                    "pic bio";
+                grid-template-columns: 1fr 2fr;
+                text-align: left;
+            }
+
+            #profile img {
+                width: 180px;
+                height: 180px;
+            }
+
+            #profile h1 {
+                font-size: 2rem;
+            }
+
+            #profile p {
+                font-size: 1rem;
+            }
+
+            #skills, #projects, #about, #contact {
+                max-width: 800px;
+                padding: 20px;
+            }
+
+            header nav a {
+                font-size: 1rem;
+            }
+        }
+        /* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">My Portfolio</div>
+    <nav>
+        <a href="#profile">Profile</a>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section id="profile">
+    <img src="ai.png" alt="Profile Picture">
+    <div>
+        <h1>Aileen Obispo</h1>
+        <p>Hi, I'm a passionate developer/designer with a love for creating beautiful and functional digital experiences. Welcome to my futuristic girly portfolio!</p>
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>I am a creative thinker with a strong focus on crafting immersive user experiences. My goal is to merge innovation with aesthetics, building projects that are both cutting-edge and delightful to interact with.</p>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>UI/UX Design</li>
+        <li>Graphic Design</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <ul>
+        <li><button class="project-btn" data-project="1">Project 1: E-commerce Website</button></li>
+        <li><button class="project-btn" data-project="2">Project 2: Portfolio Website</button></li>
+        <li><button class="project-btn" data-project="3">Project 3: Blog Application</button></li>
+        <li><button class="project-btn" data-project="4">Project 4: Social Media Dashboard</button></li>
+    </ul>
+</section>
+
+<!-- Modal -->
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle">Add Project Photo & Description</h2>
+        <div>
+            <label for="projectPhoto">Project Photo:</label>
+            <input type="file" id="projectPhoto" name="projectPhoto">
+        </div>
+        <div>
+            <label for="projectDescription">Description:</label>
+            <textarea id="projectDescription" name="projectDescription"></textarea>
+        </div>
+        <button id="saveProject">Save</button>
+    </div>
+</div>
+
+
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<script>
+    // Get the modal and elements
+var modal = document.getElementById("projectModal");
+var btns = document.querySelectorAll(".project-btn");
+var span = document.getElementsByClassName("close")[0];
+var saveBtn = document.getElementById("saveProject");
+var modalTitle = document.getElementById("modalTitle");
+
+// When a project button is clicked, open the modal
+btns.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        var projectId = this.getAttribute("data-project");
+        modal.style.display = "block";
+        modalTitle.textContent = "Add Photo & Description for Project " + projectId;
+    });
+});
+
+// When the close button is clicked, close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
+// When Save button is clicked, handle the form submission (You can replace this with actual form logic)
+saveBtn.onclick = function() {
+    var photo = document.getElementById("projectPhoto").files[0];
+    var description = document.getElementById("projectDescription").value;
+    console.log("Project photo:", photo);
+    console.log("Project description:", description);
+    modal.style.display = "none"; // Close the modal after saving
+};
+
+</script>
+
+<footer>
+    <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
